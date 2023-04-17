@@ -1,5 +1,6 @@
 import "./globals.css";
 import Header from "./header/page";
+import Provider from "./Provider";
 
 export const metadata = {
 	title: "Headlinez",
@@ -13,12 +14,14 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className="bg-gray-100 dark:bg-zinc-900 transition-all duration-700">
-				<Header />
-				<div className="max-w-6xl mx-auto px-5">
-					{children}
-				</div>
-			</body>
+			<Provider>
+				<body className="bg-gray-200 dark:bg-zinc-900 transition-all duration-700 text-black dark:text-white">
+					<Header />
+					<div className="max-w-6xl mx-auto px-5">
+						{children}
+					</div>
+				</body>
+			</Provider>
 		</html>
 	);
 }
