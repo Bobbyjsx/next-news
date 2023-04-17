@@ -8,16 +8,16 @@ const Article = ({ article }: Props) => {
 				<img
 					src={article.image}
 					alt={article.title}
-					className="object-cover h-55 w-full rounded-t-lg shadow-md"
+					className="object-cover h-52 w-full rounded-t-lg shadow-md"
 				/>
 			)}
 			<div className="flex flex-1 flex-col">
-				<div className="flex flex-col flex-1 p-5 text-black dark:text-gray-200">
+				<div className="flex flex-col flex-1 p-5  text-black dark:text-gray-200">
 					<h2 className="font-bold font-serif  text-black dark:text-gray-100">
 						{article.title}
 					</h2>
 					<section className="mt-2 flex-1">
-						<p className="text-sm line-clamp-6">
+						<p className="text-sm line-clamp-3">
 							{article.description}
 						</p>
 					</section>
