@@ -14,14 +14,14 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			{/* <Provider>  uncomment in taiwind.config too !*/}
+			<Provider> 
 				<body className="bg-gray-200 dark:bg-zinc-900 transition-all duration-700 text-black dark:text-white">
 					<Header />
 					<div className="max-w-6xl mx-auto px-5">
 						{children}
 					</div>
 				</body>
-			{/* </Provider> */}
+			</Provider>
 		</html>
 	);
 }
