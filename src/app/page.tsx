@@ -1,10 +1,14 @@
+import { categories } from "../../constants";
+import NewsList from "./newsList/page";
+import fetchNews from "../../utils/fetchNews";
+import response from "../../dummyResponse.json"
 
-const page = () => {
+
+const page = async () => {
+  const news: NewsResponse =response || await fetchNews(categories.join(","));
   return (
-    <div className="flex justify-center items-center h-screen">
-      <h1 className="flex items-center h-screen-my-auto">
-        HomePage
-      </h1>
+    <div>
+      <NewsList news={ news } />
     </div>
   );
 }
