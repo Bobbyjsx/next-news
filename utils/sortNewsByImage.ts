@@ -7,7 +7,6 @@ export default function sortNewsByImage(news: NewsResponse) {
         // details: news?.status,
         articles: [...newsWithImage, ...newsWithoutImage]
     };
-    // console.log("news>>", news);
 
     return sortedNews
 };

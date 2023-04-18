@@ -20,7 +20,11 @@ const page = ({ searchParams }: Props) => {
 				{article.urlToImage && (
 					<img
 						src={article.urlToImage}
-						alt={article.title}
+						alt={
+							article.title
+								? article.title
+								: "news poster"
+						}
 						className="object-cover h-55 w-full rounded-t-lg shadow-md"
 					/>
 				)}
