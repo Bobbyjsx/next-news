@@ -1,26 +1,22 @@
-type Pagination = {
-	count: Int
-	limit: Int
-	offset: Int
-	total: Int
-}
 
 type Article = {
-    author: null | string;
-    category: string;
-    country: string;
-    description: string;
-    image: string | null;
-    language: string;
-    published_at: string;
-    source: string;
-    title: string;
-    url: string;
+    source: {
+        id: string | null,
+        name: string
+    },
+    author?: string | null,
+    title:string | null,
+    description:string | null,
+    url:string | null,
+    urlToImage: string | null,
+    publishedAt:string | null,
+    content: string | null
 };
 
 type NewsResponse = {
-	pagination: Pagination;
-	data: Article[];
+    status?: string,
+    totalResults?: number,
+    articles: Article[];
 };
 
 type Category =

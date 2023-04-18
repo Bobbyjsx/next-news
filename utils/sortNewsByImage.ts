@@ -1,13 +1,13 @@
 export default function sortNewsByImage(news: NewsResponse) {
-    const newsWithImage = Array.isArray(news?.data) ? news?.data.filter((items) => items.image !== null) : [];
-    const newsWithoutImage = Array.isArray(news?.data) ? news?.data.filter((items) => items.image === null) : [];
+    const newsWithImage = Array.isArray(news?.articles) ? news?.articles.filter((items) => items.urlToImage !== null) : [];
+    const newsWithoutImage = Array.isArray(news?.articles) ? news?.articles.filter((items) => items.urlToImage === null) : [];
 
 
     const sortedNews = {
-        pagination: news?.pagination,
-        data: [...newsWithImage, ...newsWithoutImage]
+        // details: news?.status,
+        articles: [...newsWithImage, ...newsWithoutImage]
     };
-    console.log("news>>", news);
+    // console.log("news>>", news);
 
     return sortedNews
 };
