@@ -12,8 +12,6 @@ const page = ({ searchParams }: Props) => {
 	}
     const article: Article = searchParams;
     
-    // console.log("art >>>>>>>> ", article);
-    
 	return (
 		<article>
 			<section>
