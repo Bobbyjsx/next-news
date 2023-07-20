@@ -4,7 +4,6 @@ export default function sortNewsByImage(news: NewsResponse) {
 
 
     const sortedNews = {
-        // details: news?.status,
         articles: [...newsWithImage, ...newsWithoutImage]
     };
 

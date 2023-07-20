@@ -2,7 +2,8 @@
 type Article = {
     source: {
         id: string | null,
-        name: string
+        name:
+        string
     },
     author?: string | null,
     title:string | null,
@@ -21,7 +22,7 @@ type NewsResponse = {
 
 type Category =
 	| "General"
-	| "buisness"
+	| "business"
 	| "entertainment"
 	| "health"
 	| "science"
