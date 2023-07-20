@@ -1,3 +1,4 @@
+import timeSincePublished from "../publishedTime";
 import ReadMoreBtn from "./readMore/ReadMoreBtn";
 
 type Props = {
@@ -9,7 +10,9 @@ const Article = ({ article }: Props) => {
 			{article.urlToImage && (
 				<img
 					src={article.urlToImage}
-					alt={article.title?article.title : "news poster"}
+					alt={
+						article.title ? article.title : "news poster"
+					}
 					className="h-52  w-full object-cover rounded-t-lg shadow-md mb-5"
 				/>
 			)}
@@ -25,7 +28,11 @@ const Article = ({ article }: Props) => {
 					</section>
 					<footer className="text-xs text-right ml-auto flex space-x-1 pt-5 italic text-gray-400 p-2">
 						<p>{article.source.name} -</p>
-						<p>{article.publishedAt}</p>
+						<p>
+							{timeSincePublished(
+								`${article.publishedAt}`
+							)}
+						</p>
 					</footer>
 					<ReadMoreBtn article={article} />
 				</div>

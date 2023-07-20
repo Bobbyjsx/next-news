@@ -1,28 +1,38 @@
 import sortNewsByImage from "./sortNewsByImage";
 
-const fetchNews = async (categories?: string, keywords?: string, isDynamic?: boolean) => {
-  const headers = new Headers({
-    "Content-Type": "application/json",
-    Authorization: `Apikey ${process.env.MEDIASTACK_API_KEY}`,
-    categories: categories ?? "",
-    keywords: keywords ?? "",
-  });
+const fetchNews = async (
+	categories?: string,
+	keywords?: string,
+	isDynamic?: boolean
+) => {
+	const categoriesArray = categories?.split(",");
 
-  const res = await fetch(
-    `https://newsapi.org/v2/top-headlines?domains=bleacherreport.com,channelstv.com,cnn.com,thenextweb.com,vice.com,techcrunch.com,washingtonpost.com,bbc.com,edition.cnn.com,us.cnn.com/world,engadget.com,nytimes.com,wired.com,reuters.com,espn.com,apnews.com&language=en&apiKey=${process.env.MEDIASTACK_API_KEY}`,
-    {
-      method: "GET",
-      cache: isDynamic ? "no-cache" : "default",
-      next: isDynamic ? { revalidate: 0 } : { revalidate: 60 },
-      headers,
-    }
-  );
+	const headers = new Headers({
+		"Content-Type": "application/json",
+		Authorization: `Apikey ${process.env.NEWS_API_KEY}`,
+	});
 
-  const newsResponse = await res.json();
+	let url;
 
-  const news = sortNewsByImage(newsResponse);
+	if (keywords) {
+		url = `https://newsapi.org/v2/everything?q=${keywords}&language=en`;
+	} else if (categoriesArray?.length! < 2) {
+		url = `https://newsapi.org/v2/top-headlines?category=${categories}&language=en`;
+	} else {
+		url = `https://newsapi.org/v2/top-headlines?language=en`;
+	}
 
-  return news;
+	const res = await fetch(url, {
+		method: "GET",
+		cache: isDynamic ? "no-cache" : "default",
+		next: isDynamic ? { revalidate: 0 } : { revalidate: 60 },
+		headers,
+	});
+
+	const newsResponse = await res.json();
+
+	const news = sortNewsByImage(newsResponse);
+	return news;
 };
 
 export default fetchNews;

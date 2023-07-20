@@ -1,3 +1,4 @@
+import timeSincePublished from "../publishedTime";
 import Article from "./Article";
 
 type Props = {
