@@ -1,17 +1,13 @@
 import { categories } from "../../constants";
 import NewsList from "./newsList/page";
 import fetchNews from "../../utils/fetchNews";
-import response from "../../dummyResponse.json"
-
+import Loading from "@/app/loading";
+import response from "../../dummyResponse.json";
 
 const page = async () => {
-  const news: NewsResponse = await  fetchNews(categories.join(","));
-  // const news: NewsResponse = response 
-  return (
-    <div>
-      <NewsList news={ news } />
-    </div>
-  );
-}
+	const news = await fetchNews(categories.join(","));
+	// const news: NewsResponse = response
+	return <div>{news ? <NewsList news={news} /> : <Loading />}</div>;
+};
 
-export default page
+export default page;

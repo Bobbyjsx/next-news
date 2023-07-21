@@ -9,7 +9,7 @@ const SearchBox = () => {
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input) return;
-    router.push(`./search?term=${input}`)
+    router.push(`/search?term=${input}`)
 
 	};
 	return (

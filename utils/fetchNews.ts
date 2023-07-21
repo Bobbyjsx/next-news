@@ -1,3 +1,4 @@
+import axios from "axios";
 import sortNewsByImage from "./sortNewsByImage";
 
 const fetchNews = async (
@@ -7,10 +8,10 @@ const fetchNews = async (
 ) => {
 	const categoriesArray = categories?.split(",");
 
-	const headers = new Headers({
+	const headers = {
 		"Content-Type": "application/json",
 		Authorization: `Apikey ${process.env.NEWS_API_KEY}`,
-	});
+	};
 
 	let url;
 
@@ -22,17 +23,17 @@ const fetchNews = async (
 		url = `https://newsapi.org/v2/top-headlines?language=en`;
 	}
 
-	const res = await fetch(url, {
-		method: "GET",
-		cache: isDynamic ? "no-cache" : "default",
-		next: isDynamic ? { revalidate: 0 } : { revalidate: 60 },
-		headers,
-	});
+	try {
+		const response = await axios.get(url, { headers });
 
-	const newsResponse = await res.json();
+		const newsResponse = response.data;
 
-	const news = sortNewsByImage(newsResponse);
-	return news;
+		const news = sortNewsByImage(newsResponse);
+		return news;
+	} catch (error) {
+		console.error("Error fetching news:", error);
+		return null;
+	}
 };
 
 export default fetchNews;

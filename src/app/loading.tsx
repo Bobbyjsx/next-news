@@ -1,6 +1,6 @@
 import { tiles } from "../../loadingTiles";
 
-const loading = () => {
+const Loading = () => {
 	return (
 		<div className="">
 			<h1 className="text-3xl">NEWS</h1>
@@ -25,4 +25,4 @@ const loading = () => {
 	);
 };
 
-export default loading;
+export default Loading;
