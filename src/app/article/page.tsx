@@ -7,14 +7,7 @@ type Props = {
 	searchParams: Article;
 };
 const page = async ({ searchParams }: Props) => {
-	const news = await fetchNews();
-	if (
-		(searchParams && Object.entries(searchParams).length === 0) ||
-		!searchParams
-	) {
-		return notFound();
-	}
-
+	// const news = await fetchNews();
 	// const find = news?.articles.find(
 	// 	(item) => (item.content = searchParams.content)
 	// );
